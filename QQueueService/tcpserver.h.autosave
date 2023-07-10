@@ -1,0 +1,26 @@
+#ifndef TCPSERVER_H
+#define TCPSERVER_H
+
+#include <QTcpServer>
+#include <QTcpSocket>
+#include <QByteArray>
+#include "./qtservice/src/qtservice.h"
+
+class TcpServer : public QTcpServer
+{
+    Q_OBJECT
+public:
+    TcpServer(quint16 port, QObject* parent = 0);    
+    void incomingConnection(qintptr handle) override;
+    void pause();
+    void resume();
+    
+private slots:
+    void readClient();
+    void discardClient();
+    
+private:
+    bool disabled;
+};
+
+#endif // TCPSERVER_H
