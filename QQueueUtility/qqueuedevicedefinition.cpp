@@ -6,17 +6,20 @@ QDataStream& operator<<(QDataStream &stream, const QQueueDeviceInfo &data)
     stream << data.deviceName;
     stream << static_cast<quint32>(data.deviceType);
     stream << data.deviceIndex;
+    stream << static_cast<quint32>(data.deviceStatus);
 
     return stream;
 };
 
 QDataStream& operator>>(QDataStream &stream, QQueueDeviceInfo &data)
 {
-    quint32 tempType = 0;
+    quint32 temp = 0;
     stream >> data.deviceName;
-    stream >> tempType;
+    stream >> temp;
+    data.deviceType = static_cast<QQueueDeviceInfo::DeviceType>(temp);
     stream >> data.deviceIndex;
-    data.deviceType = static_cast<QQueueDeviceInfo::DeviceType>(tempType);
+    stream >> temp;
+    data.deviceStatus = static_cast<QQueueDeviceInfo::DeviceStatus>(temp);
     return stream;
 }
 
@@ -59,10 +62,21 @@ void QQueueDeviceInfo::setDeviceIndex(quint64 index)
     this->deviceIndex = index;
 }
 
+void QQueueDeviceInfo::setDeviceStatus(DeviceStatus status)
+{
+    this->deviceStatus = status;
+}
+
 quint64 QQueueDeviceInfo::getDeviceIndex()
 {
     return this->deviceIndex;
 }
+
+QQueueDeviceInfo::DeviceStatus QQueueDeviceInfo::getDeviceStatus()
+{
+    return this->deviceStatus;
+}
+
 
 QQueueDeviceInfo& QQueueDeviceInfo::operator=(const QQueueDeviceInfo& entity)
 {
