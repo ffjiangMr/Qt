@@ -7,6 +7,10 @@ SOURCES  = main.cpp \
     tcpserver.cpp
 
 include(./qtservice/src/qtservice.pri)
+include(../QQueueUtility/QQueueUtility.pri)
+INCLUDEPATH += $$PWD/include
+LIBS += -L$$PWD/library -lQQueueUtility
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

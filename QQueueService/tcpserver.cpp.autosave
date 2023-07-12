@@ -6,7 +6,7 @@ TcpServer::TcpServer(quint16 port, QObject* parent)
     this->deviceList = new  QVector<QQueueDeviceInfo>();
     this->server = new QTcpServer(this);
     QObject::connect(this->server, &QTcpServer::newConnection,this, [this]{
-
+       /// ToDo 
 
     });
     this->server->listen(QHostAddress::LocalHost, port);
