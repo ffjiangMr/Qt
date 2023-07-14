@@ -2,12 +2,11 @@
 #define QQUEUEDEVICEDEFINITION_H
 
 #include "QQueueUtility_global.h"
-#include "qqueueabstractdevice.h"
 #include <QObject>
 #include <QString>
+#include <QSharedPointer>
 
 class QQueueAbstractDevice;
-class QQueueDeviceMessage;
 
 class QQUEUEUTILITY_EXPORT QQueueDeviceInfo
 {
@@ -45,22 +44,23 @@ public:
         CLOSED = 3
     };
 
-
 public:
-    QQueueDeviceInfo(const QString& name, DeviceType type);
+    QQueueDeviceInfo(const QObject* device, const QString& name, DeviceType type);
     QQueueDeviceInfo(const QQueueDeviceInfo& entity);
+    ~QQueueDeviceInfo();
     QQueueDeviceInfo& operator=(const QQueueDeviceInfo& entity);
     friend class QQueueAbstractDevice;
-    friend class QQueueDeviceMessage;
 private:
     QString deviceName;
     DeviceType deviceType;
     quint64 deviceIndex;
     DeviceStatus deviceStatus;
+    QSharedPointer<QObject> deviceEntity;
 
 public:    
     quint64 getDeviceIndex();    
     DeviceStatus getDeviceStatus();
+    const QSharedPointer<QObject>& getDevice();
     QQUEUEUTILITY_EXPORT friend QDataStream& operator<<(QDataStream &stream, const QQueueDeviceInfo &data);
     QQUEUEUTILITY_EXPORT friend QDataStream& operator>>(QDataStream &stream, QQueueDeviceInfo &data);
 
@@ -68,26 +68,4 @@ private:
     void setDeviceStatus(DeviceStatus status);
     void setDeviceIndex(quint64 index);
 };
-
-class QQUEUEUTILITY_EXPORT QQueueDeviceMessage
-{
-
-public:
-    QQueueDeviceMessage(const QQueueDeviceInfo& info);
-    QQueueDeviceMessage(const QQueueDeviceMessage& entity);
-    QQueueDeviceMessage& operator=(const QQueueDeviceMessage& entity);
-    friend class QQueueAbstractDevice;
-private:
-    QQueueDeviceInfo* deviceInfo;
-    QString message;
-
-public:    
-    QString getMessage();
-    QQUEUEUTILITY_EXPORT friend QDataStream& operator<<(QDataStream &stream, const QQueueDeviceMessage &data);
-    QQUEUEUTILITY_EXPORT friend QDataStream& operator>>(QDataStream &stream, QQueueDeviceMessage &data);
-
-private:
-    void setMessage(const QString& msg);
-};
-
 #endif // QQUEUEDEVICEDEFINITION_H

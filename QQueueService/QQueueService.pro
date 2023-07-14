@@ -6,8 +6,8 @@ QT = core network
 SOURCES  = main.cpp \
     tcpserver.cpp
 
-include(./qtservice/src/qtservice.pri)
-include(../QQueueUtility/QQueueUtility.pri)
+#include(./qtservice/src/qtservice.pri)
+#include(../QQueueUtility/QQueueUtility.pri)
 INCLUDEPATH += $$PWD/include
 LIBS += -L$$PWD/library -lQQueueUtility
 

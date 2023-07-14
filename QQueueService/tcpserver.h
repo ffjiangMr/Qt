@@ -4,7 +4,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QByteArray>
-#include "./qtservice/src/qtservice.h"
+//#include "./qtservice/src/qtservice.h"
 #include "../QQueueUtility/qqueueabstractdevice.h"
 
 class TcpServer :public QQueueAbstractDevice
@@ -12,6 +12,7 @@ class TcpServer :public QQueueAbstractDevice
     Q_OBJECT
 public:
     TcpServer(quint16 port, QObject* parent = 0);
+    ~TcpServer();
 
     QVector<QQueueDeviceInfo> getDeviceList() override;
     QQueueDeviceMessage readMessage() override;
@@ -22,11 +23,12 @@ public:
 private slots:
     void readClient();
     void discardClient();
-    void incomingConnection(qintptr handle);
+    void incomingConnection(QTcpSocket* client);
     
 private:
-    QVector<QQueueDeviceInfo>* deviceList;
+    QVector<QQueueDeviceInfo*>* deviceList;
     QTcpServer* server;
+    quint16 port;
 
 };
 
