@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>down_icon.png</file>
+        <file>up_icon.png</file>
+        <file>hover_down_icon.png</file>
+        <file>hand_icon.png</file>
+        <file>right_icon.png</file>
+    </qresource>
+</RCC>

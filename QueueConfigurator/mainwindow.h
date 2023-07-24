@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "systemsetttingtab.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,6 +18,11 @@ public:
     ~MainWindow();
 
 private:
+    void init();
+
+
+private:
     Ui::MainWindow *ui;
+    SystemSetttingTab* sysemSettingTab;
 };
 #endif // MAINWINDOW_H
