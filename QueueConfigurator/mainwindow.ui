@@ -1523,17 +1523,11 @@
                    <number>5</number>
                   </property>
                   <item>
-                   <spacer name="horizontalSpacer_15">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                   <widget class="QCheckBox" name="checkBox_5">
+                    <property name="text">
+                     <string>字体图片应用所有</string>
                     </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
+                   </widget>
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButton_16">

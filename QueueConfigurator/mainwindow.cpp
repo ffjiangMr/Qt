@@ -5,6 +5,8 @@
 #include <QTextCodec>
 #include <QFile>
 #include <QtWidgets/QVBoxLayout>
+#include "include/qqueuesqlhelper.h"
+#include <QDir>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -29,6 +31,13 @@ void MainWindow::init()
     settings->beginGroup("SYSTEM_INFO");
     QString title = QObject::tr(settings->value("TITLE","").toString().toUtf8());
     QString version = QObject::tr(settings->value("VERSION","").toString().toUtf8());
+    settings->endGroup();
+
+    settings->beginGroup("SQL");
+    auto databaseName = QObject::tr(settings->value("DATABASE_NAME","").toString().toUtf8());
+    auto databasePath = QObject::tr(settings->value("DATABASE_PATH","").toString().toUtf8());
+    settings->endGroup();
+
     this->setWindowTitle(QString("%1 %2").arg("配置工具").arg(version));
     /// 设置全局默认样式表
     QFile file(":/config/styleSheet.qss");
@@ -47,4 +56,9 @@ void MainWindow::init()
 //    this->ui->tabWidget->insertTab(0,this->sysemSettingTab,
 
     delete settings;
+}
+
+void MainWindow::on_pushButton_18_clicked()
+{
+    auto database = QQueueSqlHelper::getQQueueSqlHelper();
 }

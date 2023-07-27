@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/script">
+        <file>sql_init_script.script</file>
+    </qresource>
+</RCC>
