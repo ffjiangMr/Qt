@@ -18,16 +18,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    qqueuelabel.cpp \
     qqueuelistwidget.cpp \
+    qqueuemachinewindow.cpp \
     systemsetttingtab.cpp
 
 HEADERS += \
     mainwindow.h \
+    qqueuelabel.h \
     qqueuelistwidget.h \
+    qqueuemachinewindow.h \
     systemsetttingtab.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    qqueuemachinewindow.ui
 
 INCLUDEPATH += $$PWD/include
 LIBS += -L$$PWD/library -lQQueueSqlHelper

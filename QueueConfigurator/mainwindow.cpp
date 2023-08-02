@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "qqueuemachinewindow.h"
 #include <QSettings>
 #include <QString>
 #include <QTextCodec>
@@ -60,5 +61,7 @@ void MainWindow::init()
 
 void MainWindow::on_pushButton_18_clicked()
 {
-    auto database = QQueueSqlHelper::getQQueueSqlHelper();
+    auto win = new QQueueMachineWindow(this);
+    win->setWindowModality(Qt::ApplicationModal);
+    win->show();
 }

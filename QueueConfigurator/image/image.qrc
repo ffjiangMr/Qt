@@ -5,5 +5,8 @@
         <file>hover_down_icon.png</file>
         <file>hand_icon.png</file>
         <file>right_icon.png</file>
+        <file>three_dot_icon.png</file>
+        <file>three_line_icon.png</file>
+        <file>temp.png</file>
     </qresource>
 </RCC>
