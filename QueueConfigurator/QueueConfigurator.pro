@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    qqueuedepartmentevent.cpp \
     qqueuelabel.cpp \
     qqueuelistwidget.cpp \
     qqueuemachinewindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
+    qqueuedepartmentdefinition.h \
     qqueuelabel.h \
     qqueuelistwidget.h \
     qqueuemachinewindow.h \

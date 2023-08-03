@@ -1,14 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "qqueuemachinewindow.h"
+#include "include/qqueuesqlhelper.h"
+
 #include <QSettings>
 #include <QString>
 #include <QTextCodec>
 #include <QFile>
 #include <QtWidgets/QVBoxLayout>
-#include "include/qqueuesqlhelper.h"
 #include <QDir>
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +20,19 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    if(nullptr != this->depList)
+    {
+        for(auto item = this->depList->begin(); item != this->depList->end(); item++)
+        {
+            if(nullptr != *item)
+            {
+                delete (*item);
+                (*item) = nullptr;
+            }
+        }
+        delete this->depList;
+        this->depList = nullptr;
+    }
     delete ui;
 }
 
@@ -34,9 +47,8 @@ void MainWindow::init()
     QString version = QObject::tr(settings->value("VERSION","").toString().toUtf8());
     settings->endGroup();
 
-    settings->beginGroup("SQL");
-    auto databaseName = QObject::tr(settings->value("DATABASE_NAME","").toString().toUtf8());
-    auto databasePath = QObject::tr(settings->value("DATABASE_PATH","").toString().toUtf8());
+    settings->beginGroup("DEPARTMENT");
+    tempDepName = QObject::tr(settings->value("TEMPLATE_DEPARTMENT_NAME","部门").toString().toUtf8());
     settings->endGroup();
 
     this->setWindowTitle(QString("%1 %2").arg("配置工具").arg(version));
@@ -52,11 +64,13 @@ void MainWindow::init()
     this->ui->tabWidget->setTabText(this->ui->tabWidget->indexOf(this->ui->sys_tab),QObject::tr("系统设置"));
     this->ui->tabWidget->setTabText(this->ui->tabWidget->indexOf(this->ui->queue_tab),QObject::tr("队列设置"));
     this->ui->tabWidget->setTabText(this->ui->tabWidget->indexOf(this->ui->page_tab),QObject::tr("页面设置"));
-//    this->ui->tabWidget->clear();
-//    this->sysemSettingTab = new SystemSetttingTab(this);
-//    this->ui->tabWidget->insertTab(0,this->sysemSettingTab,
-
     delete settings;
+}
+
+void MainWindow::initDepTab()
+{
+    this->depList = new QVector<QQueueDepartmentInfo*>();
+    /// 从数据库中进行检索
 }
 
 void MainWindow::on_pushButton_18_clicked()
@@ -65,3 +79,4 @@ void MainWindow::on_pushButton_18_clicked()
     win->setWindowModality(Qt::ApplicationModal);
     win->show();
 }
+

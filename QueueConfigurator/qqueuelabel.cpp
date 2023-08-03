@@ -239,7 +239,7 @@ void QQueueLabel::mousePressEventHandler(QMouseEvent *e) {
 
 void QQueueLabel::mouseReleaseEventHandler(QMouseEvent *e) {
     if(e -> button() == Qt::LeftButton) {
-        key_down = false;      //按键松开
+        key_down = false;      //按键松开111111
     }
 }
 
