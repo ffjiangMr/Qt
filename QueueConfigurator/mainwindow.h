@@ -5,8 +5,7 @@
 #include <QVector>
 #include <QListWidgetItem>
 
-#include "qqueuedepartmentdefinition.h"
-#include "systemsetttingtab.h"
+#include "./DataStruct/qqueuedepartmentdefinition.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,24 +21,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_18_clicked();
-    void on_dep_add_btn_clicked();
-    void on_dep_rem_btn_clicked();
-    void on_dep_clr_btn_clicked();
-
-    void on_dep_list_widget_itemSelectionChanged();
+    //void on_pushButton_18_clicked();
+    void on_applyBtn_clicked();
 
 private:
-    void init();
-    void initDepTab();
-
-
-    QQueueDepartmentInfo* findDepInfo(const QString &displayName);
+    void init();    
 
 private:
-    Ui::MainWindow *ui;    
-    QString tempDepName;
-    QVector<QQueueDepartmentInfo*>* depList;
-
+    Ui::MainWindow *ui;            
+    bool isCurrentTabChg;
 };
 #endif // MAINWINDOW_H

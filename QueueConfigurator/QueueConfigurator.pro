@@ -16,23 +16,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    TagPage/DepartmentSetting/qqueuedepartmentsetting.cpp \
+    TagPage/PageSetting/qqueuepagesetting.cpp \
+    TagPage/QueueSetting/qqueuequeuesetting.cpp \
+    TagPage/SystemSetting/qqueuesystemsetting.cpp\
     main.cpp \
     mainwindow.cpp \
     qqueuedepartmentevent.cpp \
-    qqueuelabel.cpp \
-    qqueuelistwidget.cpp \
-    qqueuemachinewindow.cpp \
-    systemsetttingtab.cpp
+    Componment/qqueuelabel.cpp \
+    Componment/qqueuelistwidget.cpp \
+    qqueuemachinewindow.cpp
 
 HEADERS += \
+    TagPage/DepartmentSetting/qqueuedepartmentsetting.h \
+    TagPage/PageSetting/qqueuepagesetting.h \
+    TagPage/QueueSetting/qqueuequeuesetting.h \
+    TagPage/SystemSetting/qqueuesystemsetting.h \
     mainwindow.h \
-    qqueuedepartmentdefinition.h \
-    qqueuelabel.h \
-    qqueuelistwidget.h \
-    qqueuemachinewindow.h \
-    systemsetttingtab.h
+    DataStruct/qqueuedepartmentdefinition.h \
+    Componment/qqueuelabel.h \
+    Componment/qqueuelistwidget.h \
+    qqueuemachinewindow.h
 
 FORMS += \
+    TagPage/DepartmentSetting/qqueuedepartmentsetting.ui \
+    TagPage/PageSetting/qqueuepagesetting.ui \
+    TagPage/QueueSetting/qqueuequeuesetting.ui \
+    TagPage/SystemSetting/qqueuesystemsetting.ui \    
     mainwindow.ui \
     qqueuemachinewindow.ui
 

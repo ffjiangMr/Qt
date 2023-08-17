@@ -10,7 +10,7 @@
 #include <QPushButton>
 #include <QStyleFactory>
 #include <QPainter>
-#include "qqueuelabel.h"
+#include "../Componment/qqueuelabel.h"
 
 QQueueMachineWindow::QQueueMachineWindow(QWidget *parent) :
     QMainWindow(parent),

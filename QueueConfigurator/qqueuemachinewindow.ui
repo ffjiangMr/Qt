@@ -91,7 +91,7 @@
   <customwidget>
    <class>QQueueLabel</class>
    <extends>QLabel</extends>
-   <header location="global">qqueuelabel.h</header>
+   <header location="global">../Componment/qqueuelabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

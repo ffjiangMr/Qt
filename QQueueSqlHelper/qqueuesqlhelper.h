@@ -4,6 +4,10 @@
 #include "QQueueSqlHelper_global.h"
 #include <QSqlDatabase>
 #include <QString>
+#include <QVariant>
+#include <QVector>
+#include <QStringList>
+#include <QHash>
 
 class QQUEUESQLHELPER_EXPORT QQueueSqlHelper
 {
@@ -17,6 +21,19 @@ public:
     {
         return this->isOpen;
     }
+
+    inline void closeDB()
+    {
+        if(true == this->isOpen)
+        {
+            delete QQueueSqlHelper::entity;
+        }
+        QQueueSqlHelper::entity = nullptr;
+    }
+    void deleteOneRecord(const QString& tableName, const int& id);
+    void updateOneRecord(const QString& tableName, const int& id, const QStringList& columnName, const QVector<QVariant>& values);
+    void insertOneRecord(const QString& tableName, const QStringList& columnName, const QVector<QVariant>& values);
+    const QVector<QHash<QString, QVariant>> queryRecord(const QString& tableName, const QStringList& columnName, const QVector<QVariant>& values, const bool& isSoftDeleted = false);
 
 private:
     QQUEUESQLHELPER_EXPORT static QQueueSqlHelper* entity;
