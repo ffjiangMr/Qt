@@ -14,9 +14,9 @@ QQueueSqlHelper::QQueueSqlHelper()
 {
     databaseName = "data";
     databasePath = ".";
-    if (true == QFile::exists(":/config/setting.ini"))
+    if (true == QFile::exists("./config/setting.ini"))
     {
-        QSettings settings (":/config/setting.ini",QSettings::IniFormat);
+        QSettings settings ("./config/setting.ini",QSettings::IniFormat);
         settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
         settings.beginGroup("SQL");
         databaseName = QObject::tr(settings.value("DATABASE_NAME","data").toString().toUtf8());

@@ -30,7 +30,7 @@ QQueueDepartmentSetting::QQueueDepartmentSetting(QWidget *parent) :
 
 QQueueDepartmentSetting::QQueueDepartmentSetting(const QQueueDepartmentSetting& object)
 {
-    Q_UNUSED(object)
+    QQueueDepartmentSetting(static_cast<QWidget*>(object.parent()));
 }
 
 QQueueDepartmentSetting& QQueueDepartmentSetting::operator=(const QQueueDepartmentSetting& object)
@@ -161,7 +161,7 @@ QQueueDepartmentInfo* QQueueDepartmentSetting::findDepInfo(const QString &displa
 
 void QQueueDepartmentSetting::initData()
 {
-    QSettings settings(":/config/setting.ini",QSettings::IniFormat);
+    QSettings settings("./config/setting.ini",QSettings::IniFormat);
     settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     settings.beginGroup("DEPARTMENT");
     this->tempDepName = QObject::tr(settings.value("TEMPLATE_DEPARTMENT_NAME","部门").toString().toUtf8());

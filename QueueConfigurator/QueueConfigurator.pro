@@ -22,7 +22,6 @@ SOURCES += \
     TagPage/SystemSetting/qqueuesystemsetting.cpp\
     main.cpp \
     mainwindow.cpp \
-    qqueuedepartmentevent.cpp \
     Componment/qqueuelabel.cpp \
     Componment/qqueuelistwidget.cpp \
     qqueuemachinewindow.cpp
@@ -55,7 +54,17 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
+CONFIG += file_copies
+
+setting.files = $$PWD/config/setting.ini
+setting.path = $$OUT_PWD/config/
+COPIES += setting
+
 RESOURCES += \
     config/config.qrc \
     image/image.qrc \
     script/script.qrc
+
+DISTFILES += \
+    config/setting.ini

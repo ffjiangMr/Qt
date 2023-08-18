@@ -26,9 +26,14 @@ private slots:
 
 private:
     void init();    
+    void registerPageMetaType();
+//    qRegisterMetaType<QQueueSystemSetting>();
+//    qRegisterMetaType<QQueueSystemSetting>();
+//    qRegisterMetaType<QQueueSystemSetting>();
+//    qRegisterMetaType<QQueueSystemSetting>();
+
 
 private:
-    Ui::MainWindow *ui;            
-    bool isCurrentTabChg;
+    Ui::MainWindow *ui;                
 };
 #endif // MAINWINDOW_H

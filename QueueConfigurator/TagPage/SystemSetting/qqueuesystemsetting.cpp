@@ -8,6 +8,13 @@ QQueueSystemSetting::QQueueSystemSetting(QWidget *parent) :
     ui->setupUi(this);
 }
 
+ QQueueSystemSetting::QQueueSystemSetting(const QQueueSystemSetting& object):
+     QWidget(static_cast<QWidget*>(object.parent())),
+     ui(new Ui::QQueueSystemSetting)
+ {
+     ui->setupUi(this);
+ }
+
 QQueueSystemSetting::~QQueueSystemSetting()
 {
     delete ui;

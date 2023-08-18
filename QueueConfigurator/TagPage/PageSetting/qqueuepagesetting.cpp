@@ -8,6 +8,12 @@ QQueuePageSetting::QQueuePageSetting(QWidget *parent) :
     ui->setupUi(this);
 }
 
+
+QQueuePageSetting::QQueuePageSetting(const QQueuePageSetting& object)
+{
+    QQueuePageSetting(static_cast<QWidget*>(object.parent()));
+}
+
 QQueuePageSetting::~QQueuePageSetting()
 {
     delete ui;

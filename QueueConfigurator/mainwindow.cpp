@@ -7,6 +7,7 @@
 #include "TagPage/PageSetting/qqueuepagesetting.h"
 #include "TagPage/DepartmentSetting/qqueuedepartmentsetting.h"
 
+#include <QDebug>
 #include <QSettings>
 #include <QString>
 #include <QTextCodec>
@@ -16,8 +17,8 @@
 #include <QIntValidator>
 #include <QMetaType>
 #include <QMetaObject>
+#include <QGenericArgument>
 #include <QSqlQuery>
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -34,17 +35,37 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
+    this->registerPageMetaType();
+    QCoreApplication::setOrganizationName("queue");
+    QCoreApplication::setOrganizationDomain("queue.com");
+    QCoreApplication::setApplicationName("QueueConfigurator");
+
     /// 读取配置文件
     /// 设置 窗口标题
-    this->isCurrentTabChg = false;
-    QSettings *settings = new QSettings(":/config/setting.ini",QSettings::IniFormat);
-    settings->setIniCodec(QTextCodec::codecForName("UTF-8"));
-    settings->beginGroup("SYSTEM_INFO");
-    QString title = QObject::tr(settings->value("TITLE","").toString().toUtf8());
-    QString version = QObject::tr(settings->value("VERSION","").toString().toUtf8());
-    settings->endGroup();
+    QSettings settings("./config/setting.ini",QSettings::IniFormat);
+    settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
+    settings.beginGroup("SYSTEM_INFO");
+    QString title = QObject::tr(settings.value("TITLE","").toString().toStdString().c_str());
+    QString version = QObject::tr(settings.value("TITLE","").toString().toStdString().c_str());
+    this->setWindowTitle(QString("%1 %2").arg(title).arg(version));
+    settings.endGroup();
 
-    this->setWindowTitle(QString("%1 %2").arg("配置工具").arg(version));
+    /// 配置Tag page
+    settings.beginGroup("PAGE");
+    auto allkeys = settings.allKeys();
+    auto utf8 = QTextCodec::codecForName("UTF-8");
+    foreach(auto key, allkeys)
+    {
+        auto className = settings.value(key,"").toString();
+        auto metaIndex = QMetaType::type(className.toStdString().c_str());
+        auto page = static_cast<QWidget*>(QMetaType::create(metaIndex));
+        this->ui->tabWidget->addTab(page,utf8->toUnicode(key.toLatin1()));
+    }
+    QString pageClass = QObject::tr(settings.value(allkeys[1],"").toString().toUtf8());
+
+    settings.endGroup();
+
+
     /// 设置全局默认样式表
     QFile file(":/config/styleSheet.qss");
     file.open(QFile::ReadOnly);
@@ -53,11 +74,6 @@ void MainWindow::init()
         this->setStyleSheet(file.readAll());
     }
     file.close();
-    this->ui->tabWidget->addTab(new QQueueSystemSetting(this), "系统设置");
-    this->ui->tabWidget->addTab(new QQueueQueueSetting(this), "队列设置");
-    this->ui->tabWidget->addTab(new QQueuePageSetting(this), "页面设置");
-    this->ui->tabWidget->addTab(new QQueueDepartmentSetting(this), "部门设置");
-    delete settings;    
 } 
 
 //void MainWindow::on_pushButton_18_clicked()
@@ -74,4 +90,12 @@ void MainWindow::on_applyBtn_clicked()
     {
         QMetaObject::invokeMethod(this->ui->tabWidget->widget(flag),  methodName, Qt::DirectConnection);
     }
+}
+
+void MainWindow::registerPageMetaType()
+{
+    qRegisterMetaType<QQueueDepartmentSetting>("QQueueDepartmentSetting");
+    qRegisterMetaType<QQueuePageSetting>("QQueuePageSetting");
+    qRegisterMetaType<QQueueQueueSetting>("QQueueQueueSetting");
+    qRegisterMetaType<QQueueSystemSetting>("QQueueSystemSetting");
 }

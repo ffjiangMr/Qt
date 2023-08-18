@@ -14,14 +14,14 @@ class QQueueDepartmentSetting : public QWidget
     Q_OBJECT
 
 public:
-    explicit QQueueDepartmentSetting(QWidget *parent = nullptr);
+    Q_INVOKABLE explicit QQueueDepartmentSetting(QWidget *parent = nullptr);
+    Q_INVOKABLE explicit QQueueDepartmentSetting(const QQueueDepartmentSetting& object);
     ~QQueueDepartmentSetting();
 
     inline bool getIsChanged(){return this->isChanged;}
     Q_INVOKABLE void SaveUpdated();
 
 private:
-    QQueueDepartmentSetting(const QQueueDepartmentSetting& object);
     QQueueDepartmentSetting& operator=(const QQueueDepartmentSetting& object);
     QQueueDepartmentInfo* findDepInfo(const QString &displayName);
     void initData();
@@ -39,5 +39,5 @@ private:
     bool isChanged;
     QString tempDepName;
 };
-
+Q_DECLARE_METATYPE(QQueueDepartmentSetting)
 #endif // QQUEUEDEPARTMENTSETTING_H
