@@ -21,6 +21,7 @@ SOURCES += \
     TagPage/PageSetting/qqueuepagesetting.cpp \
     TagPage/QueueSetting/qqueuequeuesetting.cpp \
     TagPage/SystemSetting/qqueuesystemsetting.cpp\
+    TagPage/WindowSetting/qqueuewindowssetting.cpp \
     main.cpp \
     mainwindow.cpp \
     Componment/qqueuelabel.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     TagPage/PageSetting/qqueuepagesetting.h \
     TagPage/QueueSetting/qqueuequeuesetting.h \
     TagPage/SystemSetting/qqueuesystemsetting.h \
+    TagPage/WindowSetting/qqueuewindowssetting.h \
     mainwindow.h \
     DataStruct/qqueuedepartmentdefinition.h \
     Componment/qqueuelabel.h \
@@ -44,7 +46,8 @@ FORMS += \
     TagPage/EmployeeSetting/qqueueemployeesetting.ui\
     TagPage/PageSetting/qqueuepagesetting.ui \
     TagPage/QueueSetting/qqueuequeuesetting.ui \
-    TagPage/SystemSetting/qqueuesystemsetting.ui \    
+    TagPage/SystemSetting/qqueuesystemsetting.ui \
+    TagPage/WindowSetting/qqueuewindowssetting.ui\
     mainwindow.ui \
     qqueuemachinewindow.ui
 

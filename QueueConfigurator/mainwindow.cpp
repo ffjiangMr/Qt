@@ -7,6 +7,7 @@
 #include "TagPage/PageSetting/qqueuepagesetting.h"
 #include "TagPage/DepartmentSetting/qqueuedepartmentsetting.h"
 #include "TagPage/EmployeeSetting/qqueueemployeesetting.h"
+#include "TagPage/WindowSetting/qqueuewindowssetting.h"
 
 #include <QDebug>
 #include <QSettings>
@@ -97,4 +98,5 @@ void MainWindow::registerPageMetaType()
     qRegisterMetaType<QQueueQueueSetting>();
     qRegisterMetaType<QQueueSystemSetting>();
     qRegisterMetaType<QQueueEmployeeSetting>();
+    qRegisterMetaType<QQueueWindowsSetting>();
 }
