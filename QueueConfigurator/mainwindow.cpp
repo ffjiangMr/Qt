@@ -6,6 +6,7 @@
 #include "TagPage/QueueSetting/qqueuequeuesetting.h"
 #include "TagPage/PageSetting/qqueuepagesetting.h"
 #include "TagPage/DepartmentSetting/qqueuedepartmentsetting.h"
+#include "TagPage/EmployeeSetting/qqueueemployeesetting.h"
 
 #include <QDebug>
 #include <QSettings>
@@ -36,9 +37,6 @@ MainWindow::~MainWindow()
 void MainWindow::init()
 {
     this->registerPageMetaType();
-    QCoreApplication::setOrganizationName("queue");
-    QCoreApplication::setOrganizationDomain("queue.com");
-    QCoreApplication::setApplicationName("QueueConfigurator");
 
     /// 读取配置文件
     /// 设置 窗口标题
@@ -94,8 +92,9 @@ void MainWindow::on_applyBtn_clicked()
 
 void MainWindow::registerPageMetaType()
 {
-    qRegisterMetaType<QQueueDepartmentSetting>("QQueueDepartmentSetting");
-    qRegisterMetaType<QQueuePageSetting>("QQueuePageSetting");
-    qRegisterMetaType<QQueueQueueSetting>("QQueueQueueSetting");
-    qRegisterMetaType<QQueueSystemSetting>("QQueueSystemSetting");
+    qRegisterMetaType<QQueueDepartmentSetting>();
+    qRegisterMetaType<QQueuePageSetting>();
+    qRegisterMetaType<QQueueQueueSetting>();
+    qRegisterMetaType<QQueueSystemSetting>();
+    qRegisterMetaType<QQueueEmployeeSetting>();
 }

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     TagPage/DepartmentSetting/qqueuedepartmentsetting.cpp \
+    TagPage/EmployeeSetting/qqueueemployeesetting.cpp\
     TagPage/PageSetting/qqueuepagesetting.cpp \
     TagPage/QueueSetting/qqueuequeuesetting.cpp \
     TagPage/SystemSetting/qqueuesystemsetting.cpp\
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     TagPage/DepartmentSetting/qqueuedepartmentsetting.h \
+    TagPage/EmployeeSetting/qqueueemployeesetting.h\
     TagPage/PageSetting/qqueuepagesetting.h \
     TagPage/QueueSetting/qqueuequeuesetting.h \
     TagPage/SystemSetting/qqueuesystemsetting.h \
@@ -39,6 +41,7 @@ HEADERS += \
 
 FORMS += \
     TagPage/DepartmentSetting/qqueuedepartmentsetting.ui \
+    TagPage/EmployeeSetting/qqueueemployeesetting.ui\
     TagPage/PageSetting/qqueuepagesetting.ui \
     TagPage/QueueSetting/qqueuequeuesetting.ui \
     TagPage/SystemSetting/qqueuesystemsetting.ui \    
