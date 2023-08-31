@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "qqueuemachinewindow.h"
 #include "include/qqueuesqlhelper.h"
 #include "TagPage/SystemSetting/qqueuesystemsetting.h"
 #include "TagPage/QueueSetting/qqueuequeuesetting.h"
@@ -21,6 +20,8 @@
 #include <QMetaObject>
 #include <QGenericArgument>
 #include <QSqlQuery>
+#include <QGridLayout>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -45,7 +46,7 @@ void MainWindow::init()
     settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     settings.beginGroup("SYSTEM_INFO");
     QString title = QObject::tr(settings.value("TITLE","").toString().toStdString().c_str());
-    QString version = QObject::tr(settings.value("TITLE","").toString().toStdString().c_str());
+    QString version = QObject::tr(settings.value("VERSION","").toString().toStdString().c_str());
     this->setWindowTitle(QString("%1 %2").arg(title).arg(version));
     settings.endGroup();
 
@@ -57,11 +58,10 @@ void MainWindow::init()
     {
         auto className = settings.value(key,"").toString();
         auto metaIndex = QMetaType::type(className.toStdString().c_str());
-        auto page = static_cast<QWidget*>(QMetaType::create(metaIndex));
-        this->ui->tabWidget->addTab(page,utf8->toUnicode(key.toLatin1()));
+        auto page = static_cast<QWidget*>(QMetaType::create(metaIndex));        
+        this->ui->tabWidget->insertTab(this->ui->tabWidget->count(), page, utf8->toUnicode(key.toLatin1()));
     }
     QString pageClass = QObject::tr(settings.value(allkeys[1],"").toString().toUtf8());
-
     settings.endGroup();
 
 
@@ -75,20 +75,10 @@ void MainWindow::init()
     file.close();
 } 
 
-//void MainWindow::on_pushButton_18_clicked()
-//{
-//    auto win = new QQueueMachineWindow(this);
-//    win->setWindowModality(Qt::ApplicationModal);
-//    win->show();
-//}
-
 void MainWindow::on_applyBtn_clicked()
 {
     auto methodName = "SaveUpdated";
-    for (int flag = 0; flag < this->ui->tabWidget->count(); flag++)
-    {
-        QMetaObject::invokeMethod(this->ui->tabWidget->widget(flag),  methodName, Qt::DirectConnection);
-    }
+    QMetaObject::invokeMethod(this->ui->tabWidget->currentWidget(),  methodName, Qt::DirectConnection);
 }
 
 void MainWindow::registerPageMetaType()
@@ -99,4 +89,10 @@ void MainWindow::registerPageMetaType()
     qRegisterMetaType<QQueueSystemSetting>();
     qRegisterMetaType<QQueueEmployeeSetting>();
     qRegisterMetaType<QQueueWindowsSetting>();
+}
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    auto methodName = "clearControl";
+    QMetaObject::invokeMethod(this->ui->tabWidget->currentWidget(),  methodName, Qt::DirectConnection);
 }

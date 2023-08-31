@@ -14,45 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>210</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>1111</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>300</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>22222</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>210</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>2222</string>
-    </property>
-   </widget>
    <widget class="QQueueLabel" name="label">
     <property name="geometry">
      <rect>
@@ -71,7 +32,8 @@
      <string notr="true">background-color: rgb(170, 255, 255);</string>
     </property>
     <property name="text">
-     <string>尔尕尔图嘎尔</string>
+     <string>支持拖拽， 动态缩放
+</string>
     </property>
    </widget>
   </widget>

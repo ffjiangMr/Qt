@@ -16,6 +16,9 @@ public:
     Q_INVOKABLE explicit QQueuePageSetting(const QQueuePageSetting& object);
     ~QQueuePageSetting();
 
+private slots:
+    void on_pushButton_18_clicked();
+
 private:
     Ui::QQueuePageSetting *ui;
 };

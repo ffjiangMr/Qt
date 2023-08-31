@@ -11,6 +11,7 @@
 #include <QIntValidator>
 #include <QSettings>
 #include <QTextCodec>
+#include <QMessageBox>
 
 QQueueDepartmentSetting::QQueueDepartmentSetting(QWidget *parent) :
     QWidget(parent),
@@ -72,44 +73,59 @@ void QQueueDepartmentSetting::onDepAddBtnClicked()
         }
         item++;
     }
-    QQueueDepartmentInfo* info = new QQueueDepartmentInfo(this->tempDepName, id,true);
+    QQueueDepartmentInfo* info = new QQueueDepartmentInfo(this->tempDepName, id);
     this->depList->push_back(info);
     this->ui->dep_list_widget->addItem(info->getName() + "(" +  QString::number(info->getId()) +")");
-    this->isChanged = true;
 }
 
 void QQueueDepartmentSetting::onDepRemBtnClicked()
 {
+    auto info = this->findDepInfo(this->ui->dep_list_widget->currentItem()->text());
+    if(nullptr != info)
+    {
+        this->depList->removeOne(info);
+    }
     this->ui->dep_list_widget->takeItem(this->ui->dep_list_widget->currentRow());
     if(this->ui->dep_list_widget->count() < 1)
     {
-        this->ui->dep_rem_btn->setEnabled(false);
-        this->ui->dep_ok_btn->setEnabled(false);
-        this->ui->dep_name_line->clear();
-        this->ui->dep_id_line->clear();
+        this->clearControl();
     }
-    this->isChanged = true;
+}
+
+void QQueueDepartmentSetting::clearControl(bool enable)
+{
+    this->ui->dep_rem_btn->setEnabled(enable);
+    this->ui->dep_ok_btn->setEnabled(enable);
+    this->ui->dep_clr_btn->setEnabled(enable);
+    this->ui->dep_name_line->clear();
+    this->ui->dep_id_line->clear();
 }
 
 void QQueueDepartmentSetting::onDepClrBtnClicked()
 {
     this->ui->dep_list_widget->clear();
-    this->ui->dep_rem_btn->setEnabled(false);
-    this->ui->dep_ok_btn->setEnabled(false);
-    this->ui->dep_name_line->clear();
-    this->ui->dep_id_line->clear();
-    this->isChanged = true;
+    this->depList->clear();
+    this->clearControl();
 }
 
 void QQueueDepartmentSetting::onDepListWidgetItemSelectionChanged()
 {
-    this->ui->dep_rem_btn->setEnabled(true);
-    this->ui->dep_ok_btn->setEnabled(true);
-    if(-1 != this->ui->dep_list_widget->currentRow())
+    if(this->depList->count()> 0)
     {
-        auto info = this->findDepInfo(this->ui->dep_list_widget->currentItem()->text());
-        this->ui->dep_name_line->setText(info->getName());
-        this->ui->dep_id_line->setText(QString::number(info->getId()));
+        this->clearControl(true);
+        if(-1 != this->ui->dep_list_widget->currentRow())
+        {
+            auto info = this->findDepInfo(this->ui->dep_list_widget->currentItem()->text());
+            if(nullptr != info)
+            {
+                this->ui->dep_name_line->setText(info->getName());
+                this->ui->dep_id_line->setText(QString::number(info->getId()));
+            }
+        }
+    }
+    else
+    {
+       this->clearControl();
     }
 }
 
@@ -121,9 +137,15 @@ void QQueueDepartmentSetting::onDepOkBtnClicked()
         auto item = this->depList->begin();
         while(item!= this->depList->end())
         {
-            if(this->ui->dep_id_line->text().toUInt() == (*item)->getId())
+
+            if((false == this->ui->dep_list_widget->currentItem()->text().contains(this->ui->dep_id_line->text())) && (this->ui->dep_id_line->text().toUInt() == (*item)->getId()))
             {
                 isDup = true;
+                QMessageBox msgBox(this);
+                msgBox.setText(QObject::tr(""
+                                           "\r\n     部门ID设置重复.     \r\n"
+                                           ""));
+                msgBox.exec();
                 break;
             }
             item++;
@@ -135,7 +157,6 @@ void QQueueDepartmentSetting::onDepOkBtnClicked()
             info->setId( this->ui->dep_id_line->text().toUInt());
             auto item = this->ui->dep_list_widget->currentItem();
             item->setText(this->ui->dep_name_line->text() + "(" + this->ui->dep_id_line->text() +")");
-            this->isChanged = true;
         }
     }
 }
@@ -167,14 +188,16 @@ void QQueueDepartmentSetting::initData()
     this->tempDepName = QObject::tr(settings.value("TEMPLATE_DEPARTMENT_NAME","部门").toString().toUtf8());
     settings.endGroup();
 
-
+    this->depList->clear();
+    this->ui->dep_list_widget->clear();
+    this->clearControl();
     /// 从数据库中进行检索
     QStringList columns;
     QVector<QVariant> values;
     auto records = QQueueSqlHelper::getQQueueSqlHelper()->queryRecord("Department",columns,values);
     foreach(auto item , records)
     {
-        auto info = new QQueueDepartmentInfo(item["name"].toString(), item["dep_id"].toInt(),false, item["id"].toInt());
+        auto info = new QQueueDepartmentInfo(item["name"].toString(), item["dep_id"].toInt(), item["id"].toInt());
         this->depList->push_back(info);
         this->ui->dep_list_widget->addItem(info->getName() + "(" +  QString::number(info->getId()) +")");
     }
@@ -187,23 +210,22 @@ void QQueueDepartmentSetting::SaveUpdated()
     QVector<QVariant> values;
     columns.append("name");
     columns.append("dep_id");
+    db->deleteRecord("Department");
     foreach(auto item , *this->depList)
-    {
-        if(item->getIsChanged())
+    {       
+        values.clear();
+        values.append(item->getName());
+        values.append(QString::number(item->getId()));
+        if(-1 == item->getRecordId())
         {
-            values.clear();
-            values.append(item->getName());
-            values.append(QString::number(item->getId()));
-            if(-1 == item->getRecordId())
-            {
-                db->insertOneRecord("Department", columns, values);
-            }
-            else
-            {
-                db->updateOneRecord("Department", item->getRecordId(), columns, values);
-            }
+            db->insertOneRecord("Department", columns, values);
         }
-    }
+        else
+        {
+            db->updateOneRecord("Department", item->getRecordId(), columns, values);
+        }
+    }    
+    this->initData();
 }
 
 

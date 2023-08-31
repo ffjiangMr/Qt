@@ -1,5 +1,6 @@
 #include "qqueuepagesetting.h"
 #include "ui_qqueuepagesetting.h"
+#include "../../qqueuemachinewindow.h"
 
 QQueuePageSetting::QQueuePageSetting(QWidget *parent) :
     QWidget(parent),
@@ -17,4 +18,11 @@ QQueuePageSetting::QQueuePageSetting(const QQueuePageSetting& object)
 QQueuePageSetting::~QQueuePageSetting()
 {
     delete ui;
+}
+
+void QQueuePageSetting::on_pushButton_18_clicked()
+{
+        auto win = new QQueueMachineWindow(this);
+        win->setWindowModality(Qt::ApplicationModal);
+        win->show();
 }

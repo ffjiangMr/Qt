@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>300</height>
+    <width>493</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,21 +38,21 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_20">
         <item>
-         <widget class="QPushButton" name="pushButton_10">
+         <widget class="QPushButton" name="pushButton_add">
           <property name="text">
            <string>添加</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_11">
+         <widget class="QPushButton" name="pushButton_remove">
           <property name="text">
            <string>删除</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_9">
+         <widget class="QPushButton" name="pushButton_clear">
           <property name="text">
            <string>清空</string>
           </property>
@@ -61,7 +61,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QQueueListWidget" name="listWidget"/>
+       <widget class="QQueueListWidget" name="listWidget_list"/>
       </item>
      </layout>
     </widget>
@@ -97,7 +97,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEdit_id"/>
         </item>
        </layout>
       </item>
@@ -126,7 +126,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="lineEdit_name"/>
         </item>
        </layout>
       </item>
@@ -155,7 +155,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="lineEdit_psw">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -187,7 +191,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_4"/>
+         <widget class="QComboBox" name="comboBox_starLevel"/>
         </item>
        </layout>
       </item>
@@ -216,7 +220,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox"/>
+         <widget class="QComboBox" name="comboBox_dep"/>
         </item>
        </layout>
       </item>
@@ -245,7 +249,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="lineEdit_title"/>
         </item>
        </layout>
       </item>
@@ -274,7 +278,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_6"/>
+         <widget class="QLineEdit" name="lineEdit_summary"/>
         </item>
        </layout>
       </item>
@@ -309,7 +313,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButton_ok">
           <property name="text">
            <string>确定</string>
           </property>

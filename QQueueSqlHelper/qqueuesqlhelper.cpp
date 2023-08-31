@@ -84,16 +84,15 @@ void QQueueSqlHelper::init()
     }
 }
 
-void QQueueSqlHelper::deleteOneRecord(const QString& tableName, const int& id)
+void QQueueSqlHelper::deleteRecord(const QString& tableName)
 {
     if(true == isOpen)
     {
-        QString command = "udpate " + tableName + " set isSoftDeleted = 1 where id = :id" ;
+        QString command = "update " + tableName + " set isSoftDeleted = 1 " ;
         if( true == this->database.transaction())
         {
             QSqlQuery query(this->database);
             query.prepare(command);
-            query.bindValue(":id",id);
             if(true == query.exec())
             {
                 this->database.commit();
@@ -111,21 +110,20 @@ void QQueueSqlHelper::updateOneRecord(const QString& tableName, const int& id, c
     if((true == isOpen) && (columnName.count() == values.count()) && (columnName.count() > 0))
     {
         QSqlQuery query(this->database);
-        QString command = "udpate " + tableName ;
+        QString command = "update " + tableName + " set " ;
         for(int index = 0; index < columnName.count(); index ++)
         {
-            command += (" set " + columnName[index] + " = :" + columnName[index] + ",");
+            command += (columnName[index] + " = :" + columnName[index] + ",");
         }
-        command = command.left(command.length() - 1);
-        command +=  "where id = :id" ;
+        command +=  " isSoftDeleted = 0 where id = :id;" ;
         query.prepare(command);
         for(int index = 0; index < values.count(); index ++)
         {
             query.addBindValue(values[index]);
         }
-        query.bindValue(":id",id);
+        query.addBindValue(id);
         if( true == this->database.transaction())
-        {
+        {            
             if(true == query.exec())
             {
                 this->database.commit();

@@ -24,6 +24,8 @@ private slots:
     //void on_pushButton_18_clicked();
     void on_applyBtn_clicked();
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
     void init();    
     void registerPageMetaType();

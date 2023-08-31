@@ -30,7 +30,7 @@ public:
         }
         QQueueSqlHelper::entity = nullptr;
     }
-    void deleteOneRecord(const QString& tableName, const int& id);
+    void deleteRecord(const QString& tableName);
     void updateOneRecord(const QString& tableName, const int& id, const QStringList& columnName, const QVector<QVariant>& values);
     void insertOneRecord(const QString& tableName, const QStringList& columnName, const QVector<QVariant>& values);
     const QVector<QHash<QString, QVariant>> queryRecord(const QString& tableName, const QStringList& columnName, const QVector<QVariant>& values, const bool& isSoftDeleted = false);

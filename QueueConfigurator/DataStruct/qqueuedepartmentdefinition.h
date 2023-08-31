@@ -6,12 +6,11 @@
 class QQueueDepartmentInfo
 {
 public:
-    QQueueDepartmentInfo(const QString& displayName, const int& dep_id,  const bool& isUpdate =false,const int& recordId = -1)
+    QQueueDepartmentInfo(const QString& displayName, const int& dep_id, const int& recordId = -1)
     {
         this->name = displayName;
         this->id = dep_id;
-        this->recordId = recordId;
-        this->isChanged = isUpdate;
+        this->recordId = recordId;        
     }
 
     inline QString getName()
@@ -24,10 +23,6 @@ public:
         return this->id;
     }
 
-    inline bool getIsChanged()
-    {
-        return this->isChanged;
-    }
 
     inline int getRecordId()
     {
@@ -36,20 +31,17 @@ public:
 
     inline void setName(const QString& name)
     {
-        this->name = name;
-        this->isChanged = true;
+        this->name = name;        
     }
     inline void setId(const quint32 id)
     {
         this->id = id;
-        this->isChanged = true;
     }
 
 private:
     QString name;
     quint32 id;
-    int recordId;
-    bool isChanged;
+    int recordId;    
 };
 
 #endif // QQUEUEDEPARTMENTDEFINITION_H
