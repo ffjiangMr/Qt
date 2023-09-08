@@ -30,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
     DataStruct/qqueueemployeedefinition.h \
+    DataStruct/qqueuewindowdefinition.h \
     TagPage/DepartmentSetting/qqueuedepartmentsetting.h \
     TagPage/EmployeeSetting/qqueueemployeesetting.h\
     TagPage/PageSetting/qqueuepagesetting.h \

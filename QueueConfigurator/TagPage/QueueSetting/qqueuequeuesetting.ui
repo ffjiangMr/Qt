@@ -48,6 +48,11 @@
      </property>
      <item>
       <widget class="QGroupBox" name="groupBox_4">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>队列管理</string>
        </property>
@@ -123,6 +128,11 @@
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <widget class="QGroupBox" name="groupBox_5">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>信息设置</string>
        </property>
@@ -148,8 +158,20 @@
            <string>基本信息</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_8">
+           <property name="spacing">
+            <number>10</number>
+           </property>
            <property name="leftMargin">
-            <number>9</number>
+            <number>5</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,5,1,5">
@@ -461,6 +483,21 @@
            <string>附加信息</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>5</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
+           </property>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="1,5,15">
              <property name="spacing">

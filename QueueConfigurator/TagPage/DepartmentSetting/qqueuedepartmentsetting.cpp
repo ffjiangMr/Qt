@@ -185,7 +185,7 @@ void QQueueDepartmentSetting::initData()
     QSettings settings("./config/setting.ini",QSettings::IniFormat);
     settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     settings.beginGroup("DEPARTMENT");
-    this->tempDepName = QObject::tr(settings.value("TEMPLATE_DEPARTMENT_NAME","部门").toString().toUtf8());
+    this->tempDepName = QObject::tr(settings.value("TEMPLATE_DEPARTMENT_NAME",QObject::tr("部门")).toString().toUtf8());
     settings.endGroup();
 
     this->depList->clear();

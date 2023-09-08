@@ -48,10 +48,30 @@
      </property>
      <item>
       <widget class="QGroupBox" name="groupBox_9">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>页面列表</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_13">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_20">
           <item>
@@ -103,10 +123,30 @@
     <layout class="QVBoxLayout" name="verticalLayout_17">
      <item>
       <widget class="QGroupBox" name="groupBox_13">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>页面按钮列表</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_18">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_28">
           <item>
@@ -159,6 +199,11 @@
      </property>
      <item>
       <widget class="QGroupBox" name="groupBox_14">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
         <string>详细设置</string>
        </property>

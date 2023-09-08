@@ -50,21 +50,6 @@ void MainWindow::init()
     this->setWindowTitle(QString("%1 %2").arg(title).arg(version));
     settings.endGroup();
 
-    /// 配置Tag page
-    settings.beginGroup("PAGE");
-    auto allkeys = settings.allKeys();
-    auto utf8 = QTextCodec::codecForName("UTF-8");
-    foreach(auto key, allkeys)
-    {
-        auto className = settings.value(key,"").toString();
-        auto metaIndex = QMetaType::type(className.toStdString().c_str());
-        auto page = static_cast<QWidget*>(QMetaType::create(metaIndex));        
-        this->ui->tabWidget->insertTab(this->ui->tabWidget->count(), page, utf8->toUnicode(key.toLatin1()));
-    }
-    QString pageClass = QObject::tr(settings.value(allkeys[1],"").toString().toUtf8());
-    settings.endGroup();
-
-
     /// 设置全局默认样式表
     QFile file(":/config/styleSheet.qss");
     file.open(QFile::ReadOnly);
@@ -73,6 +58,21 @@ void MainWindow::init()
         this->setStyleSheet(file.readAll());
     }
     file.close();
+
+    /// 配置Tag page
+    settings.beginGroup("PAGE");
+    auto allkeys = settings.allKeys();
+    auto utf8 = QTextCodec::codecForName("UTF-8");
+    foreach(auto key, allkeys)
+    {
+        auto className = settings.value(key,"").toString();
+        auto metaIndex = QMetaType::type(className.toStdString().c_str());
+        auto page = static_cast<QWidget*>(QMetaType::create(metaIndex));
+        page->setStyleSheet(this->styleSheet());
+        this->ui->tabWidget->insertTab(this->ui->tabWidget->count(), page, utf8->toUnicode(key.toLatin1()));
+    }
+    QString pageClass = QObject::tr(settings.value(allkeys[1],"").toString().toUtf8());
+    settings.endGroup();
 } 
 
 void MainWindow::on_applyBtn_clicked()
@@ -93,6 +93,7 @@ void MainWindow::registerPageMetaType()
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
+    Q_UNUSED(index)
     auto methodName = "clearControl";
     QMetaObject::invokeMethod(this->ui->tabWidget->currentWidget(),  methodName, Qt::DirectConnection);
 }

@@ -53,7 +53,7 @@ void QQueueEmployeeSetting::initData()
     QSettings settings("./config/setting.ini",QSettings::IniFormat);
     settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     settings.beginGroup("EMPLOYEE");
-    this->tempName = QObject::tr(settings.value("TEMPLATE_EMPLOYEE_NAME","员工").toString().toUtf8());
+    this->tempName = QObject::tr(settings.value("TEMPLATE_EMPLOYEE_NAME",QObject::tr("员工")).toString().toUtf8());
     settings.endGroup();
 
     this->employeeList->clear();

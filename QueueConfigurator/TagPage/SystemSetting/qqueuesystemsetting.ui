@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>456</width>
-    <height>353</height>
+    <width>459</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,6 +22,11 @@
   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1,1,0,3">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>网点信息设置</string>
      </property>
@@ -100,6 +105,13 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_2">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="title">
       <string>时间格式设置</string>
      </property>
@@ -124,6 +136,8 @@
         <property name="font">
          <font>
           <pointsize>9</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -197,6 +211,11 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_3">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>其他信息设置</string>
      </property>
@@ -413,6 +432,11 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_4">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>二代身份证设置</string>
      </property>

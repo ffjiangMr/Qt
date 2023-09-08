@@ -1,3 +1,4 @@
 create table Department (id integer primary key, name varchar, dep_id integer, isSoftDeleted integer)
 create table System(id integer primary key,siteCode varchar, siteName varchar, isShowTime integer,  timeFormate varchar, timeFont varchar,timePosition varchar, password varchar, shutdownTime varchar, clearTime varchar, listenPort integer, useIdCard integer, isDulp integer, isHideManuInput integer, ticketCount integer, isSoftDeleted integer)
 create table Employee (id integer primary key, name varchar, employee_id integer, password varchar, startLevel integer, department_id integer, title varchar, summary varchar,  isSoftDeleted integer)
+create table WindowCounter (id integer primary key, name varchar, windowId integer, callName varchar, operatorId integer, screenId integer, evaluateId integer, windowIP varchar, forwardIP varchar, employee_id integer,  isSoftDeleted integer)
