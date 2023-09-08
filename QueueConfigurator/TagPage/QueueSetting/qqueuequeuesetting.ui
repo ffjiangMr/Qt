@@ -136,7 +136,7 @@
        <property name="title">
         <string>信息设置</string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_7" stretch="4,1,2">
+       <layout class="QVBoxLayout" name="verticalLayout_7" stretch="4,1,2,1">
         <property name="spacing">
          <number>10</number>
         </property>
@@ -154,6 +154,11 @@
         </property>
         <item>
          <widget class="QGroupBox" name="groupBox_6">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="title">
            <string>基本信息</string>
           </property>
@@ -174,7 +179,7 @@
             <number>5</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,5,1,5">
+            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,3,1,3">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -188,12 +193,15 @@
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QLabel" name="label_9">
                <property name="text">
                 <string>队列名称:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -205,6 +213,9 @@
                <property name="text">
                 <string>队列ID:</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -213,7 +224,7 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,5,1,5">
+            <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,3,1,3">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -227,12 +238,15 @@
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QLabel" name="label_11">
                <property name="text">
-                <string>呼叫名称:</string>
+                <string>呼叫名称：</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -240,35 +254,23 @@
               <widget class="QLineEdit" name="lineEdit_9"/>
              </item>
              <item>
-              <spacer name="horizontalSpacer_9">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string/>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
+              </widget>
              </item>
              <item>
-              <spacer name="horizontalSpacer_8">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string/>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
+              </widget>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,5,1,5">
+            <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,3,1,3">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -282,12 +284,15 @@
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QLabel" name="label_12">
                <property name="text">
                 <string>备注信息1:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -299,6 +304,9 @@
                <property name="text">
                 <string>备注信息2:</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -307,7 +315,7 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,5,1,5">
+            <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,3,1,3">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -321,12 +329,15 @@
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QLabel" name="label_14">
                <property name="text">
-                <string>选择部门:</string>
+                <string>选择部门：</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -334,35 +345,23 @@
               <widget class="QComboBox" name="comboBox_3"/>
              </item>
              <item>
-              <spacer name="horizontalSpacer_11">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string/>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
+              </widget>
              </item>
              <item>
-              <spacer name="horizontalSpacer_10">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string/>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
+              </widget>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="2,2,10">
+            <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,2,2,5">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -376,10 +375,28 @@
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QCheckBox" name="checkBox_4">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>隐藏按钮</string>
                </property>
@@ -412,6 +429,11 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_8">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="title">
            <string>人数限制</string>
           </property>
@@ -479,6 +501,11 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_7">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="title">
            <string>附加信息</string>
           </property>
@@ -588,6 +615,58 @@
            </item>
           </layout>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,3">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_ok">
+            <property name="text">
+             <string>确定</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
